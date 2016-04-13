@@ -4,8 +4,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           openstack-sahara-ui
-Version:        4.0.0
-Release:        1%{?dist}
+Version:        XXX
+Release:        XXX
 Summary:        Sahara Management Dashboard
 
 License:        ASL 2.0
@@ -69,6 +69,4 @@ ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1840_data_processing_jobs_pane
 
 
 %changelog
-* Wed Apr 13 2016 haikel <haikel@zangetsu> - 4.0.0-1
-- Initial package (based on Ethan Gafford work)
 
