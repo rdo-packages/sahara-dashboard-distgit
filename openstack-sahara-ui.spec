@@ -1,3 +1,6 @@
+# Turn off the brp-python-bytecompile script
+#%global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
+
 %global pypi_name sahara-dashboard
 %global mod_name sahara_dashboard
 
@@ -5,7 +8,7 @@
 
 Name:           openstack-sahara-ui
 Version:        4.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Sahara Management Dashboard
 
 License:        ASL 2.0
@@ -14,6 +17,7 @@ Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstre
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
+BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
@@ -47,12 +51,18 @@ rm test-requirements.txt
 # Move config to horizon
 mkdir -p  %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled
 mkdir -p  %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled
-mv sahara_dashboard/enabled/_1810_data_processing_panel_group.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_1810_data_processing_panel_group.py
-mv sahara_dashboard/enabled/_1820_data_processing_clusters_panel.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_1820_data_processing_clusters_panel.py
-mv sahara_dashboard/enabled/_1840_data_processing_jobs_panel.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_1840_data_processing_jobs_panel.py
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1810_data_processing_panel_group.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1810_data_processing_panel_group.py
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1820_data_processing_clusters_panel.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1820_data_processing_clusters_panel.py
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1840_data_processing_jobs_panel.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1840_data_processing_jobs_panel.py
+for f in sahara_dashboard/enabled/_18*.py;do
+cp -a $f  %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/
+done
+
+
+for f in %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/*.py*; do
+filename=`basename $f`
+ln -s %{_sysconfdir}/openstack-dashboard/enabled/$filename %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/$filename
+ln -s %{_sysconfdir}/openstack-dashboard/enabled/${filename}o %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename}o
+ln -s %{_sysconfdir}/openstack-dashboard/enabled/${filename}c %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename}c
+done
+
 
 
 %files
@@ -69,6 +79,9 @@ ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1840_data_processing_jobs_pane
 
 
 %changelog
+* Fri Apr 22 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 4.0.0-2
+- Create symlinks for bytecode files
+
 * Wed Apr 13 2016 haikel <haikel@zangetsu> - 4.0.0-1
 - Initial package (based on Ethan Gafford work)
 
