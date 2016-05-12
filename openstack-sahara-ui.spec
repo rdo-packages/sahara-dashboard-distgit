@@ -47,13 +47,15 @@ rm test-requirements.txt
 # Move config to horizon
 mkdir -p  %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled
 mkdir -p  %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled
-mv sahara_dashboard/enabled/_1810_data_processing_panel_group.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_1810_data_processing_panel_group.py
-mv sahara_dashboard/enabled/_1820_data_processing_clusters_panel.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_1820_data_processing_clusters_panel.py
-mv sahara_dashboard/enabled/_1840_data_processing_jobs_panel.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_1840_data_processing_jobs_panel.py
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1810_data_processing_panel_group.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1810_data_processing_panel_group.py
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1820_data_processing_clusters_panel.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1820_data_processing_clusters_panel.py
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1840_data_processing_jobs_panel.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1840_data_processing_jobs_panel.py
-
+pushd .
+cd %{mod_name}/enabled
+for f in `ls _18*.py`
+do
+  mv $f %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/$f
+  ln -s %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/$f \
+        %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/$f
+done
+popd
 
 %files
 %doc README.rst
