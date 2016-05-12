@@ -1,6 +1,3 @@
-# Turn off the brp-python-bytecompile script
-#%global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
-
 %global pypi_name sahara-dashboard
 %global mod_name sahara_dashboard
 
@@ -17,8 +14,8 @@ Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstre
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
+BuildRequires:  python-setuptools
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
 
@@ -51,18 +48,18 @@ rm test-requirements.txt
 # Move config to horizon
 mkdir -p  %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled
 mkdir -p  %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled
-for f in sahara_dashboard/enabled/_18*.py;do
-cp -a $f  %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/
+pushd .
+cd %{buildroot}%{python2_sitelib}/%{mod_name}/enabled
+for f in _18*.py*; do
+    mv ${f} %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/
 done
+popd
 
-
-for f in %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/*.py*; do
-filename=`basename $f`
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/$filename %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/$filename
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/${filename}o %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename}o
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/${filename}c %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename}c
+for f in %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_18*.py*; do
+    filename=`basename $f`
+    ln -s %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename} \
+        %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/${filename}
 done
-
 
 
 %files
