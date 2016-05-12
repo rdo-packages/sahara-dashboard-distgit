@@ -15,6 +15,7 @@ BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
+BuildRequires:  python-setuptools
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
 
@@ -47,12 +48,22 @@ rm test-requirements.txt
 # Move config to horizon
 mkdir -p  %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled
 mkdir -p  %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled
-mv sahara_dashboard/enabled/_1810_data_processing_panel_group.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_1810_data_processing_panel_group.py
-mv sahara_dashboard/enabled/_1820_data_processing_clusters_panel.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_1820_data_processing_clusters_panel.py
-mv sahara_dashboard/enabled/_1840_data_processing_jobs_panel.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_1840_data_processing_jobs_panel.py
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1810_data_processing_panel_group.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1810_data_processing_panel_group.py
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1820_data_processing_clusters_panel.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1820_data_processing_clusters_panel.py
-ln -s %{_sysconfdir}/openstack-dashboard/enabled/_1840_data_processing_jobs_panel.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1840_data_processing_jobs_panel.py
+pushd .
+cd %{mod_name}/enabled
+for f in _18*.py;do
+    cp -a $f %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/
+done
+popd
+
+for f in %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_18*.py*; do
+    filename=`basename $f`
+    ln -s %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename} \
+        %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/${filename}
+    ln -s %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename}o \
+        %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/${filename}o
+    ln -s %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename}c \
+        %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/${filename}c
+done
 
 
 %files
