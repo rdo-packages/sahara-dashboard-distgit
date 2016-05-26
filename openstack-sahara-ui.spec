@@ -5,7 +5,7 @@
 
 Name:           openstack-sahara-ui
 Version:        4.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Sahara Management Dashboard
 
 License:        ASL 2.0
@@ -76,6 +76,9 @@ done
 
 
 %changelog
+* Thu May 26 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 4.0.0-3
+- Fix symlinks
+
 * Fri Apr 22 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 4.0.0-2
 - Create symlinks for bytecode files
 
