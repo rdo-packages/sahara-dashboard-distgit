@@ -18,6 +18,9 @@ BuildRequires:  python-pbr
 BuildRequires:  python-setuptools
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
+# Required to compile translation files
+BuildRequires:  python-django
+BuildRequires:  gettext
 
 Requires: python-babel
 Requires: openstack-dashboard
@@ -40,6 +43,10 @@ rm test-requirements.txt
 
 %build
 %{__python2} setup.py build
+# Generate i18n files
+pushd build/lib/%{mod_name}
+django-admin compilemessages
+popd
 
 
 %install
@@ -60,9 +67,14 @@ for f in %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/e
     ln -s %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename} \
         %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/${filename}
 done
+# Remove .po and .pot (they are not required)
+rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*/LC_*/django*.po
+rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*pot
+ 
+# Find language files
+%find_lang django --all-name
 
-
-%files
+%files -f django.lang
 %doc README.rst
 %license LICENSE
 %{python2_sitelib}/%{mod_name}
