@@ -89,3 +89,4 @@ rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*pot
 
 %changelog
 
+# REMOVEME: error caused by commit 
