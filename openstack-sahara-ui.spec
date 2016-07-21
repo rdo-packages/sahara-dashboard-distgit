@@ -79,12 +79,8 @@ rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*pot
 %license LICENSE
 %{python2_sitelib}/%{mod_name}
 %{python2_sitelib}/*.egg-info
-%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1810_data_processing_panel_group.py*
-%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1820_data_processing_clusters_panel.py*
-%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_1840_data_processing_jobs_panel.py*
-%{_sysconfdir}/openstack-dashboard/enabled/_1810_data_processing_panel_group.py*
-%{_sysconfdir}/openstack-dashboard/enabled/_1820_data_processing_clusters_panel.py*
-%{_sysconfdir}/openstack-dashboard/enabled/_1840_data_processing_jobs_panel.py*
+%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_18?0_data_processing_*.py?
+%{_sysconfdir}/openstack-dashboard/enabled/_18?0_data_processing_*.py?
 
 
 %changelog
