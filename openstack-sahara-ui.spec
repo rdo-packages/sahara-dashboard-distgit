@@ -10,7 +10,7 @@ Summary:        Sahara Management Dashboard
 
 License:        ASL 2.0
 URL:            https://github.com/openstack/sahara-dashboard
-Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
+Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
