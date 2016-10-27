@@ -25,6 +25,7 @@ BuildRequires:  gettext
 Requires: python-babel
 Requires: openstack-dashboard
 Requires: python-iso8601
+Requires: python-designateclient
 Requires: python-keystoneclient
 Requires: python-manilaclient
 Requires: python-neutronclient
