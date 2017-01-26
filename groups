@@ -1,5 +1,5 @@
-# UUID          Group Name
-False 	Non-Interactive Users
-fd4b96e51733a19d171cc913134fe38646d01ee6       	openstack/sahara-dashboard-distgit-core
-764255ca824be1cf9636108e8058c715b48c6cca        	openstack/sahara-dashboard-distgit-ptl
-global:Registered-Users		Registered Users
+# UUID                                  	Group Name
+#
+764255ca824be1cf9636108e8058c715b48c6cca	openstack/sahara-dashboard-distgit-ptl
+fd4b96e51733a19d171cc913134fe38646d01ee6	openstack/sahara-dashboard-distgit-core
+global:Registered-Users                 	Registered Users
