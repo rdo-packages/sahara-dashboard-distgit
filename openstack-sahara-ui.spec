@@ -24,13 +24,20 @@ BuildRequires:  gettext
 
 Requires: python-babel
 Requires: openstack-dashboard
+Requires: python-django >= 1.8
+Requires: python-django-compressor >= 2.0
+Requires: python-django-openstack-auth >= 3.1.0
 Requires: python-iso8601
-Requires: python-designateclient
-Requires: python-keystoneclient
-Requires: python-manilaclient
-Requires: python-neutronclient
-Requires: python-novaclient
-Requires: python-saharaclient
+Requires: python-designateclient >= 1.5.0
+Requires: python-keystoneclient >= 1:3.8.0
+Requires: python-manilaclient >= 1.12.0
+Requires: python-neutronclient >= 5.1.0
+Requires: python-novaclient >= 1:6.0.0
+Requires: python-oslo-log >= 3.11.0
+Requires: python-pbr >= 1.8
+Requires: python-saharaclient >= 1.1.0
+Requires: pytz
+
 
 %description
 Sahara Management Dashboard
