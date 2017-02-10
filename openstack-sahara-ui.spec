@@ -1,16 +1,21 @@
+%global milestone .0rc1
 %global pypi_name sahara-dashboard
 %global mod_name sahara_dashboard
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           openstack-sahara-ui
-Version:        XXX
-Release:        XXX
+Version:        6.0.0
+Release:        0.1%{?milestone}%{?dist}
 Summary:        Sahara Management Dashboard
 
 License:        ASL 2.0
 URL:            https://github.com/openstack/sahara-dashboard
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
+#
+# patches_base=6.0.0.0rc1
+#
+
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -92,4 +97,7 @@ rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*pot
 
 
 %changelog
+* Fri Feb 10 2017 Alfredo Moralejo <amoralej@redhat.com> 6.0.0-0.1.0rc1
+- Update to 6.0.0.0rc1
+
 
