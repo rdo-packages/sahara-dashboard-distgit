@@ -4,8 +4,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           openstack-sahara-ui
-Version:        4.0.0
-Release:        3%{?dist}
+Version:        4.1.2
+Release:        1%{?dist}
 Summary:        Sahara Management Dashboard
 
 License:        ASL 2.0
@@ -76,6 +76,9 @@ done
 
 
 %changelog
+* Tue May 23 2017 Alfredo Moralejo <amoralej@redhat.com> 4.1.2-1
+- Update to 4.1.2
+
 * Thu May 26 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 4.0.0-3
 - Fix symlinks
 
