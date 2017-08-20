@@ -4,7 +4,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           openstack-sahara-ui
-Version:        5.0.1
+Version:        5.0.2
 Release:        1%{?dist}
 Summary:        Sahara Management Dashboard
 
@@ -84,6 +84,9 @@ rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*pot
 
 
 %changelog
+* Sun Aug 20 2017 rdo-trunk <javier.pena@redhat.com> 5.0.2-1
+- Update to 5.0.2
+
 * Thu Feb 02 2017 Alfredo Moralejo <amoralej@redhat.com> 5.0.1-1
 - Update to 5.0.1
 
