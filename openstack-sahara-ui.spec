@@ -23,10 +23,9 @@ BuildRequires:  python-django
 BuildRequires:  gettext
 
 Requires: python-babel
-Requires: openstack-dashboard
+Requires: openstack-dashboard >= 1:13.0.0
 Requires: python-django >= 1.8
 Requires: python-django-compressor >= 2.0
-Requires: python-django-openstack-auth >= 3.5.0
 Requires: python-designateclient >= 1.5.0
 Requires: python-keystoneclient >= 1:3.8.0
 Requires: python-manilaclient >= 1.12.0
