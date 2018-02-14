@@ -14,26 +14,27 @@ Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstr
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python-pbr
-BuildRequires:  python-setuptools
-BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python2-pbr
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-oslo-sphinx
 # Required to compile translation files
-BuildRequires:  python-django
+BuildRequires:  python2-django
 BuildRequires:  gettext
 
-Requires: python-babel
+Requires: python2-babel
 Requires: openstack-dashboard >= 1:13.0.0
-Requires: python-django >= 1.8
-Requires: python-django-compressor >= 2.0
-Requires: python-designateclient >= 1.5.0
-Requires: python-keystoneclient >= 1:3.8.0
-Requires: python-manilaclient >= 1.12.0
-Requires: python-neutronclient >= 6.3.0
-Requires: python-novaclient >= 1:9.0.0
-Requires: python-oslo-log >= 3.22.0
-Requires: python-pbr >= 2.0.0
-Requires: python-saharaclient >= 1.1.0
+Requires: python2-django >= 1.8
+Requires: python2-django-compressor >= 2.0
+Requires: python2-designateclient >= 2.7.0
+Requires: python2-keystoneclient >= 1:3.8.0
+Requires: python2-manilaclient >= 1.16.0
+Requires: python2-neutronclient >= 6.3.0
+Requires: python2-novaclient >= 1:9.1.0
+Requires: python2-oslo-log >= 3.36.0
+Requires: python2-pbr >= 2.0.0
+Requires: python2-saharaclient >= 1.4.0
+Requires: python2-oslo-serialization >= 2.18.0
 Requires: pytz
 
 
