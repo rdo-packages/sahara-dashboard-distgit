@@ -92,3 +92,4 @@ rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*pot
 
 %changelog
 
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/sahara-dashboard/commit/?id=0f83666144b98c4267f615b0ad4b442e0d619ca5
