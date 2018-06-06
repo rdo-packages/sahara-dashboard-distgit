@@ -65,15 +65,11 @@ mkdir -p  %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/
 pushd .
 cd %{buildroot}%{python2_sitelib}/%{mod_name}/enabled
 for f in _18*.py*; do
-    mv ${f} %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/
+    ln -s %{buildroot}%{python2_sitelib}/%{mod_name}/enabled/${f} \
+        %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${f}
 done
 popd
 
-for f in %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_18*.py*; do
-    filename=`basename $f`
-    ln -s %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename} \
-        %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/${filename}
-done
 # Remove .po and .pot (they are not required)
 rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*/LC_*/django*.po
 rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*pot
