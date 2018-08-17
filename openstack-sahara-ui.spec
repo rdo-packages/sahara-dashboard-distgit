@@ -23,17 +23,17 @@ BuildRequires:  python2-django
 BuildRequires:  gettext
 
 Requires: python2-babel
-Requires: openstack-dashboard >= 1:13.0.0
-Requires: python2-django >= 1.8
+Requires: openstack-dashboard >= 1:14.0.0.0b2
+Requires: python2-django >= 1.11
 Requires: python2-django-compressor >= 2.0
 Requires: python2-designateclient >= 2.7.0
-Requires: python2-keystoneclient >= 1:3.8.0
+Requires: python2-keystoneclient >= 1:3.15.0
 Requires: python2-manilaclient >= 1.16.0
-Requires: python2-neutronclient >= 6.3.0
+Requires: python2-neutronclient >= 6.7.0
 Requires: python2-novaclient >= 1:9.1.0
 Requires: python2-oslo-log >= 3.36.0
 Requires: python2-pbr >= 2.0.0
-Requires: python2-saharaclient >= 1.4.0
+Requires: python2-saharaclient >= 2.0.0
 Requires: python2-oslo-serialization >= 2.18.0
 Requires: pytz
 
