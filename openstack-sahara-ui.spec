@@ -9,17 +9,17 @@ Release:        XXX
 Summary:        Sahara Management Dashboard
 
 License:        ASL 2.0
-URL:            https://github.com/openstack/sahara-dashboard
+URL:            https://git.openstack.org/cgit/openstack/sahara-dashboard
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python2-pbr
+BuildRequires:  python2-pbr >= 2.0.0
 BuildRequires:  python2-setuptools
 BuildRequires:  python2-sphinx
 BuildRequires:  python2-oslo-sphinx
 # Required to compile translation files
-BuildRequires:  python2-django
+BuildRequires:  python2-django >= 1.11
 BuildRequires:  gettext
 
 Requires: python2-babel
@@ -27,6 +27,7 @@ Requires: openstack-dashboard >= 1:14.0.0
 Requires: python2-django >= 1.11
 Requires: python2-django-compressor >= 2.0
 Requires: python2-designateclient >= 2.7.0
+Requires: python2-keystoneauth1 >= 3.4.0
 Requires: python2-keystoneclient >= 1:3.15.0
 Requires: python2-manilaclient >= 1.16.0
 Requires: python2-neutronclient >= 6.7.0
