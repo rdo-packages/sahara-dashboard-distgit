@@ -1,0 +1,9 @@
+Code-Review+2: Javier Peña <jpena@redhat.com>
+Code-Review+2: Yatin Karel <ykarel@redhat.com>
+Workflow+1: Yatin Karel <ykarel@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Mon, 20 Aug 2018 16:12:33 +0000
+Reviewed-on: https://review.rdoproject.org/r/15080
+Project: openstack/sahara-dashboard-distgit
+Branch: refs/heads/rpm-master
