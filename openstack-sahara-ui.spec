@@ -63,9 +63,11 @@ popd
 
 # Move config to horizon
 mkdir -p  %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled
+mkdir -p  %{buildroot}%{_sysconfdir}/openstack-dashboard/local_settings.d
 mkdir -p  %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled
-pushd .
-cd %{buildroot}%{python2_sitelib}/%{mod_name}/enabled
+mkdir -p  %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/local_settings.d
+# link enabled/* entries
+pushd %{buildroot}%{python2_sitelib}/%{mod_name}/enabled
 for f in _18*.py*; do
     mv ${f} %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/
 done
@@ -76,6 +78,17 @@ for f in %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/e
     ln -s %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/${filename} \
         %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/${filename}
 done
+
+# link local_settings.d/* entries
+pushd %{buildroot}%{python2_sitelib}/%{mod_name}/local_settings.d
+for f in _12*.py*; do
+    ln -s %{python2_sitelib}/%{mod_name}/local_settings.d/${f} \
+        %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/local_settings.d/${f}
+    ln -s %{python2_sitelib}/%{mod_name}/local_settings.d/${f} \
+        %{buildroot}%{_sysconfdir}/openstack-dashboard/local_settings.d/${f}
+done
+popd
+
 # Remove .po and .pot (they are not required)
 rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*/LC_*/django*.po
 rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*pot
@@ -89,7 +102,9 @@ rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*pot
 %{python2_sitelib}/%{mod_name}
 %{python2_sitelib}/*.egg-info
 %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_18*.py*
+%{_datadir}/openstack-dashboard/openstack_dashboard/local/local_settings.d/_12*.py*
 %{_sysconfdir}/openstack-dashboard/enabled/_18*.py*
+%{_sysconfdir}/openstack-dashboard/local_settings.d/_12*.py*
 
 
 %changelog
