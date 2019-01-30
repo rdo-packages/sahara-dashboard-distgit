@@ -61,7 +61,7 @@ rm -rf %{pypi_name}.egg-info
 rm test-requirements.txt
 
 %build
-%{pyver_bin} setup.py build
+%{pyver_build}
 # Generate i18n files
 pushd build/lib/%{mod_name}
 django-admin compilemessages
