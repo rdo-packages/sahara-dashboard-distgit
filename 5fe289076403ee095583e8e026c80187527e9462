@@ -1,0 +1,8 @@
+Code-Review+2: Telles Nóbrega <tenobreg@redhat.com>
+Workflow+1: Telles Nóbrega <tenobreg@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Fri, 08 Feb 2019 15:18:57 +0000
+Reviewed-on: https://review.rdoproject.org/r/18707
+Project: openstack/sahara-dashboard-distgit
+Branch: refs/heads/queens-rdo
