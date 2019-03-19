@@ -45,7 +45,7 @@ Requires: python%{pyver}-neutronclient >= 6.7.0
 Requires: python%{pyver}-novaclient >= 1:9.1.0
 Requires: python%{pyver}-oslo-log >= 3.36.0
 Requires: python%{pyver}-pbr >= 2.0.0
-Requires: python%{pyver}-saharaclient >= 2.0.0
+Requires: python%{pyver}-saharaclient >= 2.2.0
 Requires: python%{pyver}-oslo-serialization >= 2.18.0
 Requires: python%{pyver}-pytz
 
