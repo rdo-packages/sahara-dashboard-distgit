@@ -1,3 +1,4 @@
+%global milestone .0rc1
 # Macros for py2/py3 compatibility
 %if 0%{?fedora} || 0%{?rhel} > 7
 %global pyver %{python3_pkgversion}
@@ -15,13 +16,17 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           openstack-sahara-ui
-Version:        XXX
-Release:        XXX
+Version:        10.0.0
+Release:        0.1%{?milestone}%{?dist}
 Summary:        Sahara Management Dashboard
 
 License:        ASL 2.0
 URL:            https://git.openstack.org/cgit/openstack/sahara-dashboard
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
+#
+# patches_base=10.0.0.0rc1
+#
+
 BuildArch:      noarch
 
 BuildRequires:  python%{pyver}-devel
@@ -113,4 +118,7 @@ rm -f %{buildroot}%{pyver_sitelib}/%{mod_name}/locale/*pot
 
 
 %changelog
+* Fri Mar 22 2019 RDO <dev@lists.rdoproject.org> 10.0.0-0.1.0rc1
+- Update to 10.0.0.0rc1
+
 
