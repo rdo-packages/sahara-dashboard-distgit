@@ -4,7 +4,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           openstack-sahara-ui
-Version:        9.0.1
+Version:        9.0.2
 Release:        1%{?dist}
 Summary:        Sahara Management Dashboard
 
@@ -104,6 +104,9 @@ rm -f %{buildroot}%{python2_sitelib}/%{mod_name}/locale/*pot
 
 
 %changelog
+* Wed Jan 29 2020 RDO <dev@lists.rdoproject.org> 9.0.2-1
+- Update to 9.0.2
+
 * Tue Jan 15 2019 RDO <dev@lists.rdoproject.org> 9.0.1-1
 - Update to 9.0.1
 
