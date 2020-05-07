@@ -1,4 +1,4 @@
-%global milestone .0rc1
+%global milestone .0rc2
 %global pypi_name sahara-dashboard
 %global mod_name sahara_dashboard
 
@@ -6,15 +6,13 @@
 
 Name:           openstack-sahara-ui
 Version:        12.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        0.2%{?milestone}%{?dist}
 Summary:        Sahara Management Dashboard
 
 License:        ASL 2.0
 URL:            https://git.openstack.org/cgit/openstack/sahara-dashboard
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
-#
-# patches_base=12.0.0.0rc1
-#
+# patches_base=12.0.0.0rc2
 
 BuildArch:      noarch
 
@@ -105,6 +103,9 @@ rm -f %{buildroot}%{python3_sitelib}/%{mod_name}/locale/*pot
 
 
 %changelog
+* Thu May 07 2020 RDO <dev@lists.rdoproject.org> 12.0.0-0.2.0rc1
+- Update to 12.0.0.0rc2
+
 * Thu Apr 30 2020 RDO <dev@lists.rdoproject.org> 12.0.0-0.1.0rc1
 - Update to 12.0.0.0rc1
 
