@@ -25,7 +25,7 @@ BuildRequires:  gettext
 Requires: python3-babel
 Requires: openstack-dashboard >= 1:17.1.0
 Requires: python3-designateclient >= 2.7.0
-Requires: python3-keystoneauth1 >= 3.4.0
+Requires: python3-keystoneauth1 >= 3.8.0
 Requires: python3-keystoneclient >= 1:3.22.0
 Requires: python3-manilaclient >= 1.16.0
 Requires: python3-neutronclient >= 6.7.0
