@@ -1,4 +1,3 @@
-%global milestone .0rc1
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0x5d2d1e4fb8d38e6af76c50d53d4fec30cf5ce3da
 %global pypi_name sahara-dashboard
@@ -8,14 +7,12 @@
 
 Name:           openstack-sahara-ui
 Version:        14.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Sahara Management Dashboard
 
 License:        ASL 2.0
 URL:            https://git.openstack.org/cgit/openstack/sahara-dashboard
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
-#
-# patches_base=14.0.0.0rc1
 #
 
 # Required for tarball sources verification
@@ -122,6 +119,9 @@ rm -f %{buildroot}%{python3_sitelib}/%{mod_name}/locale/*pot
 
 
 %changelog
+* Wed Apr 14 2021 RDO <dev@lists.rdoproject.org> 14.0.0-1
+- Update to 14.0.0
+
 * Wed Mar 24 2021 RDO <dev@lists.rdoproject.org> 14.0.0-0.1.0rc1
 - Update to 14.0.0.0rc1
 
