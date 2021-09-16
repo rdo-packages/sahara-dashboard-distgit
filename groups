@@ -1,9 +1,9 @@
 # UUID Group Name
 global:Registered-Users	Registered Users
-global:Anonymous-Users	Anonymous Users
-05a678d3d4a168e149d5e8a0063bbd1b1c5526da	Administrators
-401cf37bee35d1c809d4d957e55f2a304f8eed69	rdo-provenpackagers
-09ca784326e4e099ee6a873339629b99787b6bc2	openstack/sahara-dashboard-ptl
-4572c517702492251ad622a289176552a8acbbb2	rdo-superusers
 bee70226e41b04f8f3b8ba1fc775407f1aca03f8	openstack/sahara-dashboard-core
+4572c517702492251ad622a289176552a8acbbb2	rdo-superusers
+09ca784326e4e099ee6a873339629b99787b6bc2	openstack/sahara-dashboard-ptl
 6ddfecad023c6f4fa3ac8c4d2583c502ea675a73	Non-Interactive Users
+global:Anonymous-Users	Anonymous Users
+401cf37bee35d1c809d4d957e55f2a304f8eed69	rdo-provenpackagers
+05a678d3d4a168e149d5e8a0063bbd1b1c5526da	Administrators
