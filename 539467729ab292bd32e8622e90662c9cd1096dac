@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c1b91a_dff3fba6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 141
+      },
+      "writtenOn": "2023-03-14T13:08:10Z",
+      "side": 1,
+      "message": "\n Problem: conflicting requests\n  - nothing provides openstack-dashboard \u003e\u003d 1:17.1.0 needed by openstack-sahara-ui-18.0.0-0.1.0rc1.el9s.noarch\n  - nothing provides python3.9dist(horizon) \u003e\u003d 17.1 needed by openstack-sahara-ui-18.0.0-0.1.0rc1.el9s.noarch\n(try to add \u0027--skip-broken\u0027 to skip uninstallable packages or \u0027--nobest\u0027 to use not only best candidate packages)\n\nLet\u0027s wait for https://review.rdoproject.org/r/c/openstack/horizon-distgit/+/47760",
+      "revId": "539467729ab292bd32e8622e90662c9cd1096dac",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
