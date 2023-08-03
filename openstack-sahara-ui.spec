@@ -4,13 +4,15 @@
 %global mod_name sahara_dashboard
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order bashate sphinx openstackdocstheme xvfbwrapper
 
 Name:           openstack-sahara-ui
 Version:        XXX
 Release:        XXX
 Summary:        Sahara Management Dashboard
 
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            https://git.openstack.org/cgit/openstack/sahara-dashboard
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 # Required for tarball sources verification
@@ -27,28 +29,10 @@ BuildRequires:  openstack-macros
 %endif
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-sphinx
-BuildRequires:  python3-oslo-sphinx
-# Required to compile translation files
-BuildRequires:  python3-django >= 1.11
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  gettext
 
-Requires: python3-babel
 Requires: openstack-dashboard >= 1:17.1.0
-Requires: python3-designateclient >= 2.7.0
-Requires: python3-keystoneauth1 >= 3.8.0
-Requires: python3-keystoneclient >= 1:3.22.0
-Requires: python3-manilaclient >= 1.16.0
-Requires: python3-neutronclient >= 6.7.0
-Requires: python3-novaclient >= 1:9.1.0
-Requires: python3-oslo-log >= 3.36.0
-Requires: python3-pbr >= 2.0.0
-Requires: python3-saharaclient >= 2.2.0
-Requires: python3-oslo-serialization >= 2.18.0
-Requires: python3-pytz
-
 
 %description
 Sahara Management Dashboard
@@ -60,12 +44,26 @@ Sahara Management Dashboard
 %{gpgverify}  --keyring=%{SOURCE102} --signature=%{SOURCE101} --data=%{SOURCE0}
 %endif
 %setup -q -n sahara-dashboard-%{upstream_version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
-rm test-requirements.txt
+
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs}; do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+%generate_buildrequires
+%pyproject_buildrequires -t -e %{default_toxenv}
 
 %build
-%{py3_build}
+%pyproject_wheel
 # Generate i18n files
 pushd build/lib/%{mod_name}
 django-admin compilemessages
@@ -73,7 +71,7 @@ popd
 
 
 %install
-%{py3_install}
+%pyproject_install
 
 # Move config to horizon
 mkdir -p  %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled
@@ -105,11 +103,14 @@ rm -f %{buildroot}%{python3_sitelib}/%{mod_name}/locale/*pot
 # Find language files
 %find_lang django --all-name
 
+%check
+%tox -e %{default_toxenv}
+
 %files -f django.lang
 %doc README.rst
 %license LICENSE
 %{python3_sitelib}/%{mod_name}
-%{python3_sitelib}/*.egg-info
+%{python3_sitelib}/*.dist-info
 %{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_18*.py*
 %{_datadir}/openstack-dashboard/openstack_dashboard/local/local_settings.d/_12*.py*
 %{_sysconfdir}/openstack-dashboard/enabled/_18*.py*
