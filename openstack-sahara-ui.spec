@@ -1,5 +1,6 @@
+%global milestone .0rc1
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0x815AFEC729392386480E076DCC0DFE2D21C023C9
 %global pypi_name sahara-dashboard
 %global mod_name sahara_dashboard
 
@@ -8,13 +9,17 @@
 %global excluded_brs doc8 bandit pre-commit hacking flake8-import-order bashate sphinx openstackdocstheme xvfbwrapper
 
 Name:           openstack-sahara-ui
-Version:        XXX
-Release:        XXX
+Version:        19.0.0
+Release:        0.1%{?milestone}%{?dist}
 Summary:        Sahara Management Dashboard
 
 License:        Apache-2.0
 URL:            https://git.openstack.org/cgit/openstack/sahara-dashboard
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
+#
+# patches_base=19.0.0.0rc1
+#
+
 # Required for tarball sources verification
 %if 0%{?sources_gpg} == 1
 Source101:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz.asc
@@ -122,4 +127,7 @@ rm -f %{buildroot}%{python3_sitelib}/%{mod_name}/locale/*pot
 
 
 %changelog
+* Fri Sep 15 2023 RDO <dev@lists.rdoproject.org> 19.0.0-0.1.0rc1
+- Update to 19.0.0.0rc1
+
 
