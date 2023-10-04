@@ -1,0 +1,10 @@
+Workflow+1: Luigi Toscano <ltoscano@redhat.com>
+Code-Review+2: Luigi Toscano <ltoscano@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Code-Review+2: Joel Capitao <jcapitao@redhat.com>
+Workflow+1: Joel Capitao <jcapitao@redhat.com>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Wed, 04 Oct 2023 12:07:45 +0000
+Reviewed-on: https://review.rdoproject.org/r/c/openstack/sahara-dashboard-distgit/+/50277
+Project: openstack/sahara-dashboard-distgit
+Branch: refs/heads/bobcat-rdo
